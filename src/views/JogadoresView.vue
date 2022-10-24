@@ -4,9 +4,9 @@ export default {
   data() {
     return {
       atletas: [
-        { nome: "Neymar JR", id: 1 },
-        { nome: "Cristiano Ronaldo", id: 2 },
-        { nome: "Messi", id: 3 },
+        { nome: "Pedro", id: 1 },
+        { nome: "Gabigol", id: 2 },
+        { nome: "Arrascaeta", id: 3 },
       ],
     };
   },

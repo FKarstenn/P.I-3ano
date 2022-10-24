@@ -3,17 +3,6 @@ export default {
   data() {
     return {
       user: [{ login: "", password: "", email: "" }],
-      register: [
-        {
-          login: "",
-          password: "",
-          email: "",
-          name: "",
-          secondname: "",
-          age: "",
-          number: "",
-        },
-      ],
     };
   },
 };
@@ -22,55 +11,52 @@ export default {
 <template>
   <main id="main">
     <div class="login-area">
-      <h1>Crie sua conta</h1>
+      <h1>login</h1>
       <div class="login-inputs">
-        <input type="text" placeholder="Usuário" v-model="this.user.login" />
-        <input type="text" placeholder="Senha" v-model="this.user.password" />
-        <input type="text" placeholder="Email" v-model="this.user.email" />
-        <input type="text" placeholder="Nome" v-model="this.user.name" />
+        <p>E-mail</p>
         <input
           type="text"
-          placeholder="Sobrenome"
-          v-model="this.user.secondname"
+          placeholder="Usuário ou e-mail"
+          v-model="this.user.login"
         />
-        <input type="number" placeholder="Idade" v-model="this.user.age" />
-        <input
-          type="number"
-          placeholder="Telefone"
-          v-model="this.user.number"
-        />
-        <button>Próximo</button>
+        <div>
+
+          <p>Nome</p>
+          <input type="text" placeholder="Senha" v-model="this.user.password" />
+          <p>Sobrenome</p>
+        </div>
+        <div>
+
+          <input type="text" placeholder="Senha" v-model="this.user.password" />
+          <p>Senha</p>
+          <input type="text" placeholder="Senha" v-model="this.user.password" />
+          <p>Confirmação de senha</p>
+        </div>
+        <input type="text" placeholder="Senha" v-model="this.user.password" />
+        <RouterLink to="/">
+          <button>Cadastrar</button>
+        </RouterLink>
       </div>
       <p>Ou então entre utilizando:</p>
       <section class="login-with">
         <span class="login-with-item">Facebook</span>
         <span class="login-with-item">Google</span>
-        <span class="login-with-item">Apple</span>
       </section>
-      <RouterLink to="/cadastro"> </RouterLink>
     </div>
-    <div class="testing">
-      <p style="color: orange">Login: {{ user.login }}</p>
-      <p style="color: yellow">Senha: {{ user.password }}</p>
-      <p style="color: red">Email: {{ user.email }}</p>
-      <p style="color: red">Nome: {{ user.name }}</p>
-      <p style="color: red">Sobrenome: {{ user.secondname }}</p>
-      <p style="color: red">Idade: {{ user.age }}</p>
-      <p style="color: red">Telefone: {{ user.number }}</p>
-    </div>
+
   </main>
 </template>
 
 <style scoped>
+#main {
+  background-image: url(../assets/registro-bg.jpg);
+}
 .login-area {
   margin: 5vh;
-  padding: 50px 150px;
+  padding: 80px 120px;
   cursor: default;
 
-  background-color: rgba(0, 0, 0, 0.6);
-  background-image: url(https://i.pinimg.com/550x/98/34/66/983466ddf30a88bf189b1efa13c335f7.jpg);
-  border: 5px solid black;
-  color: white;
+  background-color: rgba(255, 255, 255);
   border-radius: 20px;
 
   display: flex;
@@ -82,9 +68,9 @@ export default {
 input {
   text-align: center;
   color: black;
-  padding: 5px;
-  border-radius: 10px;
-  border: 2px solid black;
+  padding: 8px;
+  border: 0px;
+  border-bottom: 2px solid black;
 }
 .login-inputs {
   display: flex;
@@ -98,7 +84,6 @@ h1 {
 p {
   font-size: 1.2rem;
   font-weight: bolder;
-  color: white;
 }
 .login-with {
   display: flex;
@@ -125,22 +110,16 @@ p {
 }
 button {
   align-self: center;
-  width: fit-content;
-  padding: 5px;
-  color: black;
-  border: 2px solid black;
+  width: 100%;
+  padding: 8px;
   border-radius: 5px;
   margin-top: 5px;
+  
+  border: 2px solid black;
+  background-color: blue;
+  color: white;
 }
 button:active {
   border-color: yellow;
-}
-.testing {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: black;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 10px 30px;
 }
 </style>

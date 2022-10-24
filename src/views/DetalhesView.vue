@@ -24,7 +24,7 @@ export default {
       <section class="description">
         <div class="player-image">
           <img
-            src="https://a.espncdn.com/media/motion/2022/1021/Hu_221021_BR_futebol_premier_league_chelsea_x_manchester_united_cristiano_ronaldo_fim_plother_highlight/Hu_221021_BR_futebol_premier_league_chelsea_x_manchester_united_cristiano_ronaldo_fim_plother_highlight.jpg"
+            src="https://fla-bucket-s3-us.s3.amazonaws.com/public/images/players/7/1647694277.jpeg"
             alt=""
           />
         </div>

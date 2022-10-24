@@ -6,7 +6,13 @@ export default {
       paises: [
         { nome: "Brasil", id: 1 },
         { nome: "Argentina", id: 2 },
-        { nome: "Portugal", id: 3 },
+        { nome: "Bolivia", id: 3 },
+        { nome: "Uruguai", id: 4 },
+        { nome: "Peru", id: 5 },
+        { nome: "Equador", id: 6 },
+        { nome: "Colombia", id: 7 },
+        { nome: "Chile", id: 8 },
+        { nome: "Paraguai", id: 9 },
       ],
     };
   },
