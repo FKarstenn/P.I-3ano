@@ -30,22 +30,21 @@ export default {
         </div>
         <div class="player-about">
           <p>Nome: {{ nome }}</p>
-          <p>Altura: 1,70</p>
-          <p>Idade de início de carreira: 12 anos</p>
-          <p>Tempo de carreira: 13 anos</p>
+          <p>Altura: 1,85</p>
+          <p>Idade de início de carreira: 19 anos</p>
+          <p>Tempo de carreira: 6 anos</p>
         </div>
       </section>
     </div>
     <div class="content-area">
       <h1>Títulos conquistados</h1>
       <ul>
-        <li>TAÇA DOS CAMPEÕES</li>
-        <li>TAÇA MUNDIAL DE CLUBES</li>
-        <li>SUPERTAÇA EUROPEIA</li>
-        <li>TAÇA UEFA</li>
-        <li>TAÇA DO REI</li>
-        <li>TAÇA DA LIGA 1984-85</li>
-        <li>MUNDIALITO OU MINI-COPA DO MUNDO</li>
+        <li>Copa do Brasil</li>
+        <li>Primeira liga</li>
+        <li>Recopa sul Americana</li>
+        <li>Campeonato Brasileiro</li>
+        <li>Campeonato Carioca</li>
+        <li>Supercopa do Brasil</li>
       </ul>
     </div>
   </main>
