@@ -1,10 +1,85 @@
 <script>
+import * as fb from "@/plugins/firebase";
+import { createUserWithEmailAndPassword , getAuth} from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 export default {
   data() {
     return {
-      user: [{ login: "", password: "", email: "" }],
+      alertInvalidInfo: false,
+      invalidInfo:false,
+      userExiste: false,
+      user: [{ nome: "", password: "", email: "" ,sobrenome:""}],
     };
   },
+  methods: {
+  async criarNovaConta() {
+    try{
+      if(this.user.nome == null || this.user.nome == ''|| this.user.email == null || this.user.email == '' || this.user.sobrenome == null || this.user.sobrenome == '' || this.user.password == null || this.user.password == ''){
+        this.invalidInfo = false
+        this.alertInvalidInfo = true
+      }
+      else{
+        this.invalidInfo = true
+      }
+      if(this.invalidInfo == true){
+      await fb.auth.createUserWithEmailAndPassword(
+        this.user.email,
+        this.user.password
+      );      
+      this.registrarPerfil();
+      this.login();
+      }
+      else{
+        this.alertInvalidInfo = true
+      }
+      }catch (error){
+        const errorCode = error.code;
+        switch (errorCode) {
+          case "auth/invalid-email":
+            this.emailInvalid = true;
+            this.user = {};
+            break;
+          case "auth/email-already-in-use":
+            this.userExiste = true;
+            this.user = {};
+            break;
+          default:
+            this.userExiste = true;
+            break;
+        }
+      }
+    },
+    async login() {
+      try {
+        await fb.auth.signInWithEmailAndPassword(
+          this.user.email,
+          this.user.password,
+        );
+        this.$router.push({ name: "Home" });
+      }
+      catch (error) {
+        this.errologin = true;
+      }
+},
+    async registrarPerfil(){
+      this.uid = fb.auth.currentUser.uid;
+      const res = await fb.PerfilCollection.add({            
+        owner: this.uid,
+        Nome: this.user.nome,
+        Genero: this.user.genero,
+        Data_nasc: this.user.idade,
+        Peso: this.user.peso,
+        altura: this.user.altura,
+        gluten: this.user.gluten,
+        Lactose: this.user.lactose,
+        Frutos: this.user.frutos
+        });
+        const idPerfil = res.id
+        await fb.PerfilCollection.doc(idPerfil).update({
+          idPerfil: idPerfil
+        })
+      },
+    }
 };
 </script>
 
@@ -22,15 +97,13 @@ export default {
         <div>
 
           <p>Nome</p>
-          <input type="text" placeholder="Senha" v-model="this.user.password" />
+          <input type="text" placeholder="Nome" v-model="this.user.nome" />
           <p>Sobrenome</p>
         </div>
         <div>
 
-          <input type="text" placeholder="Senha" v-model="this.user.password" />
+          <input type="text" placeholder="Sobrenome" v-model="this.user.sobrenome" />
           <p>Senha</p>
-          <input type="text" placeholder="Senha" v-model="this.user.password" />
-          <p>Confirmação de senha</p>
         </div>
         <input type="text" placeholder="Senha" v-model="this.user.password" />
         <RouterLink to="/">
@@ -42,6 +115,18 @@ export default {
         <span class="login-with-item">Facebook</span>
         <span class="login-with-item">Google</span>
       </section>
+      <v-alert
+              transition="scale-transition"
+              v-model="userExiste"
+              dismissible
+              outlined
+            >Este email já está em uso.</v-alert>
+            <v-alert
+              transition="scale-transition"
+              v-model="alertInvalidInfo"
+              dismissible
+              outlined
+            >Preencha todos os campos.</v-alert>
     </div>
 
   </main>
