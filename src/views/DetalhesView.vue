@@ -47,6 +47,17 @@ export default {
         <li>Supercopa do Brasil</li>
       </ul>
     </div>
+    <div class="content-area">
+      <iframe
+        width="1000"
+        height="500"
+        src="https://www.youtube.com/embed/r7DjOYMm2MM"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
   </main>
 </template>
 

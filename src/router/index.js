@@ -22,12 +22,13 @@ const router = createRouter({
       name: "cadastro",
       component: CadastroView,
     },
-    
-    { path:'',
+
+    {
+      path: '',
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       },
-      children:[
+      children: [
         {
           path: "/",
           name: "home",
@@ -64,7 +65,7 @@ const router = createRouter({
         },
       ]
     }
-    
+
   ],
 });
 
@@ -77,6 +78,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
-  })
+})
 
 export default router;
